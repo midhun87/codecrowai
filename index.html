@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join CODE CROW AI Hackathon on Feb 13, 2026. A premier offline college hackathon focused on AI innovation, learning, and real-world problem solving. Registration opens Feb 3.">
+    <meta name="keywords" content="AI Hackathon, Code Crow, College Hackathon 2026, Artificial Intelligence, Student Competition, Offline Hackathon">
+    <meta name="author" content="Code Crow Organization">
+    <meta property="og:title" content="CODE CROW AI Hackathon 2026">
+    <meta property="og:description" content="Registration opens Feb 3, 2026. Join us for a day of innovation and code.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg">
+    
+    <title>CODE CROW AI Hackathon 2026 | College Innovation Event</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', // Slate 900
+                            card: '#1e293b', // Slate 800
+                            accent: '#6366f1', // Indigo 500
+                            glow: '#818cf8', // Indigo 400
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0f172a;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .loader-content {
+            text-align: center;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            border-top-color: #6366f1;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <img class="h-16 w-auto object-contain mb-4 mx-auto animate-pulse" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="Loading">
+            <h2 class="text-white font-bold text-xl tracking-widest">LOADING EXPERIENCE</h2>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img class="h-12 w-auto object-contain rounded-full shadow-lg shadow-indigo-500/20" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="CODE CROW AI Logo">
+                    <span class="font-bold text-xl tracking-tight text-white hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">CODE CROW</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#hero" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Home</a>
+                    <a href="#about" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">About</a>
+                    <a href="#dates" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Dates</a>
+                    <a href="#contact" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Contact</a>
+                    <button onclick="openModal('register-modal')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transform hover:-translate-y-0.5">
+                        Register
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2 transition-colors" aria-label="Open menu">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#hero" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">About</a>
+                <a href="#dates" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Dates</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Contact</a>
+                <button onclick="openModal('register-modal'); toggleMobileMenu()" class="w-full text-left px-3 py-3 text-base font-bold text-indigo-400 hover:text-indigo-300 hover:bg-slate-800 rounded-lg transition-colors">
+                    Register Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Canvas Background -->
+        <canvas id="particle-canvas" class="absolute inset-0 z-0 opacity-40"></canvas>
+
+        <!-- Background Gradient Orbs -->
+        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/30 rounded-full blur-[120px] animate-pulse-slow"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-[-50px]">
+            <div class="animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-indigo-500/30 text-indigo-300 text-xs font-bold tracking-wide uppercase mb-8 shadow-lg backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    Event Date: February 13, 2026
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 drop-shadow-2xl">
+                    CODE CROW <br class="hidden md:block" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 animate-gradient-x">AI HACKATHON</span>
+                </h1>
+                
+                <p class="mt-4 text-lg md:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                    Innovate. Learn. Solve. <br class="md:hidden">
+                    <span class="text-slate-400">Join the ultimate college-level challenge to build real-world AI solutions.</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                    <button onclick="openModal('register-modal')" class="group relative w-full sm:w-auto px-10 py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg transition-all shadow-[0_10px_40px_-10px_rgba(99,102,241,0.5)] hover:bg-indigo-700 hover:shadow-[0_20px_40px_-10px_rgba(99,102,241,0.6)] hover:-translate-y-1 overflow-hidden">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Register Now <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </button>
+                    
+                    <a href="#about" class="w-full sm:w-auto px-10 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl font-medium text-lg transition-all backdrop-blur-md">
+                        Learn More
+                    </a>
+                </div>
+                
+                <p class="mt-8 text-sm text-slate-400 font-mono">
+                    Registration: <span class="text-indigo-400 font-bold">Feb 3 - Feb 11</span>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 hidden md:block">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-900 border-t border-slate-800/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">About The Event</h2>
+            <div class="bg-slate-800/50 p-8 md:p-12 rounded-2xl border border-slate-700 shadow-xl backdrop-blur-sm">
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">
+                    <strong class="text-indigo-400">CODE CROW AI Hackathon</strong> is a premier offline event designed to bridge the gap between theoretical knowledge and practical application. We invite college students from all backgrounds to collaborate, innovate, and build AI-driven solutions for contemporary challenges. Whether you are a coding novice or a machine learning enthusiast, this platform offers a unique opportunity to test your skills in a high-energy environment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Dates -->
+    <section id="dates" class="py-24 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center reveal">Event Timeline</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl reveal hover:border-indigo-500/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-indigo-900/30 rounded-xl flex items-center justify-center mb-6 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="unlock" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Registration Opens</h3>
+                    <p class="text-slate-400 mb-4 text-sm">Be ready to secure your spot.</p>
+                    <div class="text-3xl font-black text-white bg-slate-800 inline-block px-4 py-2 rounded-lg border border-slate-700">Feb 3</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl reveal hover:border-red-500/50 transition-all duration-300 hover:transform hover:-translate-y-2 group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-red-900/20 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                        <i data-lucide="lock" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Registration Closes</h3>
+                    <p class="text-slate-400 mb-4 text-sm">Last chance to participate.</p>
+                    <div class="text-3xl font-black text-white bg-slate-800 inline-block px-4 py-2 rounded-lg border border-slate-700">Feb 11</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gradient-to-br from-indigo-600 to-violet-700 p-8 rounded-2xl reveal shadow-2xl shadow-indigo-500/20 transform md:scale-105" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white backdrop-blur-sm">
+                        <i data-lucide="trophy" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Hackathon Day</h3>
+                    <p class="text-indigo-100 mb-4 text-sm">The main event begins.</p>
+                    <div class="text-3xl font-black text-indigo-600 bg-white inline-block px-4 py-2 rounded-lg shadow-lg">Feb 13</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Participate -->
+    <section id="benefits" class="py-24 bg-slate-900 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center reveal">Why Join Us?</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Benefit Items -->
+                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Hands-on AI Experience</h4>
+                            <p class="text-slate-400 text-sm mt-2">Work with real datasets and cutting-edge AI models.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 50ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Official Certificate</h4>
+                            <p class="text-slate-400 text-sm mt-2">Verified certificate of participation for your resume.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 100ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Industry Exposure</h4>
+                            <p class="text-slate-400 text-sm mt-2">Network with industry mentors and tech leaders.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 150ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Team Collaboration</h4>
+                            <p class="text-slate-400 text-sm mt-2">Build synergy and solve problems with peers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 200ms;">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Problem Solving</h4>
+                            <p class="text-slate-400 text-sm mt-2">Tackle complex logic and design challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-indigo-900/20"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Innovate?</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">Registration spots are limited. Ensure you have read the terms and conditions before proceeding with the payment.</p>
+            <button onclick="openModal('register-modal')" class="bg-white text-indigo-900 hover:bg-slate-200 font-bold py-4 px-12 rounded-full shadow-xl transition-all hover:scale-105 text-lg">
+                Register Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <img class="h-10 w-auto opacity-90 rounded-full" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="Logo">
+                        <span class="text-white font-bold text-xl">CODE CROW</span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed mb-6">
+                        Empowering the next generation of AI developers through competition, collaboration, and innovation. Join the revolution.
+                    </p>
+                    <div class="flex space-x-4">
+                         <!-- Social Placeholders -->
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:text-right">
+                    <h3 class="text-white font-bold text-lg mb-6">Contact Us</h3>
+                    <div class="space-y-4">
+                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
+                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                            LAKIREDDY BALI REDDY COLLEGE OF ENGINEERING
+                        </p>
+                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <a href="mailto:kotagirimidhun@gmail.com" class="hover:text-indigo-400 transition-colors">kotagirimidhun@gmail.com</a>
+                        </p>
+                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            +91 9010408899
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                <div class="flex flex-col gap-1">
+                    <p class="text-slate-600 text-xs">
+                        &copy; 2026 CODE CROW AI Hackathon. All rights reserved.
+                    </p>
+                    <p class="text-slate-600 text-xs">
+                        Designed & Developed by <a href="https://xetasolutions.in" target="_blank" class="text-indigo-500 hover:text-indigo-400 font-semibold transition-colors">Xeta Tech Solutions</a>
+                    </p>
+                </div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy-modal')" class="text-slate-600 hover:text-indigo-400 transition-colors text-xs font-medium">Privacy Policy</button>
+                    <button onclick="openModal('terms-modal')" class="text-slate-600 hover:text-indigo-400 transition-colors text-xs font-medium">Terms of Service</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('register-modal')"></div>
+        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg relative shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-800/50">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i data-lucide="user-plus" class="w-5 h-5 text-indigo-500"></i> Registration
+                </h3>
+                <button onclick="closeModal('register-modal')" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Body (Scrollable) -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <div class="bg-indigo-900/20 border border-indigo-500/30 rounded-lg p-4 mb-6">
+                    <h4 class="text-indigo-300 font-semibold mb-2 flex items-center gap-2">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i> Important Notice
+                    </h4>
+                    <p class="text-sm text-slate-300">
+                        Registration requires an online payment. By proceeding, you agree to the terms below.
+                    </p>
+                </div>
+
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Payment Terms</h4>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start gap-3 text-sm text-slate-400">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
+                        <span>Registration fee is <strong>non-refundable</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm text-slate-400">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
+                        <span>Payment cannot be reversed once completed.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm text-slate-400">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
+                        <span>Organizer is not responsible for bank network failures.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm text-slate-400">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
+                        <span>Correct details must be provided.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t border-slate-800 bg-slate-900">
+                <button onclick="alert('Registration opens on Feb 3, 2026!'); closeModal('register-modal')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/25">
+                    Agree & Proceed to Pay
+                </button>
+                <p class="text-center text-xs text-slate-500 mt-3">Gateway opens Feb 3, 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('privacy-modal')"></div>
+        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl relative shadow-2xl flex flex-col max-h-[80vh]">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
+                <button onclick="closeModal('privacy-modal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto text-slate-300 text-sm leading-relaxed space-y-4">
+                <p><strong>1. Information Collection:</strong> We collect personal information such as name, email, college name, and phone number during registration.</p>
+                <p><strong>2. Use of Information:</strong> This data is used solely for event coordination, certification, and communication regarding Code Crow updates.</p>
+                <p><strong>3. Data Protection:</strong> We implement security measures to maintain the safety of your personal information. We do not sell or trade your data to outside parties.</p>
+                <p><strong>4. Media:</strong> Photographs and videos taken during the event may be used for promotional purposes on our social media and website.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('terms-modal')"></div>
+        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl relative shadow-2xl flex flex-col max-h-[80vh]">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white">Terms of Service</h3>
+                <button onclick="closeModal('terms-modal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto text-slate-300 text-sm leading-relaxed space-y-4">
+                <p><strong>1. Eligibility:</strong> Participants must be currently enrolled in a college/university. Valid ID cards are mandatory.</p>
+                <p><strong>2. Conduct:</strong> All participants are expected to maintain a professional environment. Harassment of any kind will result in immediate disqualification.</p>
+                <p><strong>3. Intellectual Property:</strong> Projects created during the hackathon belong to the team. However, Code Crow reserves the right to showcase the projects.</p>
+                <p><strong>4. Disqualification:</strong> Plagiarism or usage of pre-built projects will lead to disqualification.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 1000); // 1 second delay for effect
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once
+
+        /* ================= PARTICLE NETWORK ANIMATION ================= */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        // Configuration
+        const particleCount = window.innerWidth < 768 ? 40 : 80; // Fewer particles on mobile
+        const connectionDistance = 150;
+        const particleSpeed = 0.5;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * particleSpeed;
+                this.vy = (Math.random() - 0.5) * particleSpeed;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(129, 140, 248, 0.5)'; // Indigo color
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw connections
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(129, 140, 248, ${1 - distance / connectionDistance})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+
+        // Initialize
+        resize();
+        initParticles();
+        animateParticles();
+
+    </script>
+</body>
+</html>
