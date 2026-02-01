@@ -8,15 +8,18 @@
     <title>LBRCE Events & Registrations Portal | Lakireddy Bali Reddy College of Engineering</title>
     <meta name="description" content="The official centralized events platform for Lakireddy Bali Reddy College of Engineering (LBRCE). Find and register for upcoming technical events, hackathons, cultural fests, and workshops.">
     <meta name="keywords" content="LBRCE events, Lakireddy Bali Reddy College of Engineering events, college events LBRCE, LBRCE event registrations, LBRCE hackathons, LBRCE workshops, Code Crow AI">
-    <meta name="author" content="LBRCE Web Team">
+    <meta name="author" content="Xeta Tech Solutions (xetasolutions.in)">
     <link rel="canonical" href="https://www.events-lbrce.in/">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png">
 
     <!-- OPEN GRAPH (Social Media) -->
     <meta property="og:title" content="LBRCE Events & Registrations Portal">
     <meta property="og:description" content="The official platform for all events conducted at Lakireddy Bali Reddy College of Engineering. Register for CODE CROW AI and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.events-lbrce.in/">
-    <meta property="og:image" content="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg">
+    <meta property="og:image" content="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png">
 
     <!-- Tailwind CSS (via CDN for single-file portability) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,48 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "LBRCE Events",
-  "url": "https://www.events-lbrce.in/",
-  "logo": "https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png",
-  "sameAs": [
-    "https://www.lbrce.ac.in/"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "CODE CROW AI Hackathon 2026",
-  "startDate": "2026-02-13",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "location": {
-    "@type": "Place",
-    "name": "Lakireddy Bali Reddy College of Engineering",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Mylavaram",
-      "addressRegion": "AP",
-      "postalCode": "521230",
-      "addressCountry": "IN"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg"
-  ],
-  "organizer": {
-    "@type": "Organization",
-    "name": "LBRCE Events",
-    "url": "https://www.events-lbrce.in/"
-  }
-}
-</script>
-
+    
     <!-- Phosphor Icons (Lightweight SVG Icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -128,7 +90,7 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Loading Screen Styles */
+        /* UPGRADED PRELOADER STYLES */
         #preloader {
             position: fixed;
             top: 0;
@@ -140,22 +102,60 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
         }
         
-        #preloader.hidden {
+        #preloader.loaded {
+            transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
         }
 
-        .loader-logo {
-            animation: logo-pulse 2s infinite ease-in-out;
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Corrected alignment */
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        @keyframes logo-pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 10px rgba(0, 51, 102, 0.3)); }
-            100% { transform: scale(1); opacity: 0.8; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
+        .loader-logo {
+            animation: logo-float 3s ease-in-out infinite;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes logo-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .loader-progress-bg {
+            width: 200px;
+            height: 2px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin: 30px auto 0 auto; /* Centered progress bg */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #FFB800, #003366);
+            transition: width 0.4s ease-out;
         }
         
         /* Hide content initially to prevent FOUC */
@@ -166,21 +166,16 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen loading">
 
-    <!-- PRELOADER -->
+    <!-- UPGRADED PRELOADER -->
     <div id="preloader">
-        <div class="flex flex-col items-center">
+        <div class="loader-content">
             <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" 
                  alt="LBRCE Logo" 
-                 class="w-32 h-auto mb-4 loader-logo">
-            <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full bg-lbrce-accent w-1/3 animate-[spin_2s_linear_infinite]" style="animation: loading-bar 1.5s infinite ease-in-out; width: 30%;"></div>
+                 class="w-32 md:w-40 h-auto mb-6 loader-logo drop-shadow-2xl">
+            <div class="loader-progress-bg">
+                <div class="loader-progress-bar" id="load-bar"></div>
             </div>
-            <style>
-                @keyframes loading-bar {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(400%); }
-                }
-            </style>
+            <p class="mt-4 text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">Lakireddy Bali Reddy College</p>
         </div>
     </div>
 
@@ -474,22 +469,14 @@
             </div>
         </section>
 
-        <!-- CAMPUS COMMUNITIES SECTION (SCROLLING - UPDATED) -->
+        <!-- CAMPUS COMMUNITIES SECTION -->
         <section class="py-16 bg-white border-t border-gray-100 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
                 <p class="text-gray-500 font-semibold uppercase tracking-widest text-sm">Powered by LBRCE Communities</p>
             </div>
             
             <div class="relative overflow-hidden w-full group">
-                <!-- Wrapper for scrolling animation - duplicated content for seamless loop -->
-                <!-- UPDATED: Removed justify-around, added gap-24 for equal spacing -->
                 <div class="flex animate-scroll hover:animate-[scroll_40s_linear_infinite_paused] w-max gap-24">
-                    
-                    <!-- Single Set of Logos Function -->
-                    <!-- Note: We repeat this content twice within the flex container to create the loop, 
-                         but using a loop in HTML without a template engine requires copy-pasting. 
-                         The gap-24 ensures equal spacing between items AND between the sets. -->
-
                     <!-- SET 1 -->
                     <div class="flex items-center gap-24 px-12">
                         <div class="flex flex-col items-center flex-shrink-0 w-32">
@@ -518,7 +505,7 @@
                         </div>
                     </div>
                     
-                    <!-- SET 2 (Exact Duplicate for Loop) -->
+                    <!-- SET 2 -->
                     <div class="flex items-center gap-24 px-12">
                         <div class="flex flex-col items-center flex-shrink-0 w-32">
                             <img src="https://lbrce.ac.in/clubs/saheli_club/images/saheli_logo.jpg" alt="Saheli Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
@@ -570,7 +557,6 @@
                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Home</a></li>
                         <li><a href="#events" class="text-gray-400 hover:text-white text-sm transition-colors">Upcoming Events</a></li>
                         <li><a href="https://www.lbrce.ac.in/" target="_blank" class="text-gray-400 hover:text-white text-sm transition-colors">Main College Website</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Student Login (Coming Soon)</a></li>
                     </ul>
                 </div>
 
@@ -605,7 +591,6 @@
                 
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
                     <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
                     <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-linkedin-logo text-xl"></i></a>
                 </div>
@@ -615,21 +600,33 @@
 
     <!-- INTERACTION SCRIPTS -->
     <script>
-        // Preloader Logic
+        // Upgraded Preloader Logic
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
+            const loadBar = document.getElementById('load-bar');
             const body = document.body;
             
-            // Short timeout to ensure the animation is seen for a moment
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                body.classList.remove('loading');
-                
-                // Remove from DOM after fade out transition
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 800);
-            }, 1500);
+            // Artificial progress simulation for "Better" feel
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    
+                    // Finalize loading
+                    setTimeout(() => {
+                        preloader.classList.add('loaded');
+                        body.classList.remove('loading');
+                        
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 1000);
+                    }, 400);
+                } else {
+                    width += Math.random() * 15; // Jumpy natural loading feel
+                    if (width > 100) width = 100;
+                    loadBar.style.width = width + '%';
+                }
+            }, 100);
         });
 
         // Mobile Menu Toggle
@@ -647,13 +644,15 @@
             });
         });
 
-        // Navbar Scroll Effect (Glassmorphism intensity change)
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                nav.classList.add('shadow-sm');
+                nav.classList.add('shadow-sm', 'h-16');
+                nav.classList.remove('h-20');
             } else {
-                nav.classList.remove('shadow-sm');
+                nav.classList.remove('shadow-sm', 'h-16');
+                nav.classList.add('h-20');
             }
         });
     </script>
