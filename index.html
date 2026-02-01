@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join CODE CROW AI Hackathon on Feb 13, 2026. A premier offline college hackathon focused on AI innovation, learning, and real-world problem solving. Registration opens Feb 3.">
-    <meta name="keywords" content="AI Hackathon, Code Crow, College Hackathon 2026, Artificial Intelligence, Student Competition, Offline Hackathon">
-    <meta name="author" content="Code Crow Organization">
-    <meta property="og:title" content="CODE CROW AI Hackathon 2026">
-    <meta property="og:description" content="Registration opens Feb 3, 2026. Join us for a day of innovation and code.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg">
     
-    <title>CODE CROW AI Hackathon 2026 | College Innovation Event</title>
+    <!-- SEO CONFIGURATION -->
+    <title>LBRCE Events & Registrations Portal | Lakireddy Bali Reddy College of Engineering</title>
+    <meta name="description" content="The official centralized events platform for Lakireddy Bali Reddy College of Engineering (LBRCE). Find and register for upcoming technical events, hackathons, cultural fests, and workshops.">
+    <meta name="keywords" content="LBRCE events, Lakireddy Bali Reddy College of Engineering events, college events LBRCE, LBRCE event registrations, LBRCE hackathons, LBRCE workshops, Code Crow AI">
+    <meta name="author" content="LBRCE Web Team">
+    <link rel="canonical" href="https://www.events-lbrce.in/">
 
-    <!-- Tailwind CSS -->
+    <!-- OPEN GRAPH (Social Media) -->
+    <meta property="og:title" content="LBRCE Events & Registrations Portal">
+    <meta property="og:description" content="The official platform for all events conducted at Lakireddy Bali Reddy College of Engineering. Register for CODE CROW AI and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.events-lbrce.in/">
+    <meta property="og:image" content="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg">
+
+    <!-- Tailwind CSS (via CDN for single-file portability) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (Lightweight SVG Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <!-- Custom Config & Styles -->
     <script>
         tailwind.config = {
             theme: {
@@ -32,21 +38,25 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            dark: '#0f172a', // Slate 900
-                            card: '#1e293b', // Slate 800
-                            accent: '#6366f1', // Indigo 500
-                            glow: '#818cf8', // Indigo 400
+                        lbrce: {
+                            blue: '#003366', // Deep corporate blue
+                            accent: '#FFB800', // Gold/Yellow accent
+                            light: '#F3F4F6'
                         }
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scroll': 'scroll 40s linear infinite',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -55,643 +65,556 @@
     </script>
 
     <style>
-        body {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-        /* Custom scrollbar */
+        /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #cbd5e1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #94a3b8;
         }
         
-        /* Preloader Styles */
+        /* Glassmorphism utility */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Loading Screen Styles */
         #preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #0f172a;
+            background-color: #ffffff;
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
         }
-        .loader-content {
-            text-align: center;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(99, 102, 241, 0.3);
-            border-radius: 50%;
-            border-top-color: #6366f1;
-            animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Reveal Animation */
-        .reveal {
+        
+        #preloader.hidden {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            visibility: hidden;
         }
 
-        /* Modal Styles */
-        .modal {
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-content {
-            transform: scale(0.95);
-            transition: transform 0.3s ease-in-out;
-        }
-        .modal.active .modal-content {
-            transform: scale(1);
+        .loader-logo {
+            animation: logo-pulse 2s infinite ease-in-out;
         }
 
-        /* Glass Cards */
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        @keyframes logo-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 10px rgba(0, 51, 102, 0.3)); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        /* Hide content initially to prevent FOUC */
+        body.loading {
+            overflow: hidden;
         }
     </style>
 </head>
-<body class="antialiased relative">
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen loading">
 
-    <!-- Preloader -->
+    <!-- PRELOADER -->
     <div id="preloader">
-        <div class="loader-content">
-            <div class="spinner"></div>
-            <img class="h-16 w-auto object-contain mb-4 mx-auto animate-pulse" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="Loading">
-            <h2 class="text-white font-bold text-xl tracking-widest">LOADING EXPERIENCE</h2>
+        <div class="flex flex-col items-center">
+            <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" 
+                 alt="LBRCE Logo" 
+                 class="w-32 h-auto mb-4 loader-logo">
+            <div class="h-1 w-48 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-lbrce-accent w-1/3 animate-[spin_2s_linear_infinite]" style="animation: loading-bar 1.5s infinite ease-in-out; width: 30%;"></div>
+            </div>
+            <style>
+                @keyframes loading-bar {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(400%); }
+                }
+            </style>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300" id="navbar">
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img class="h-12 w-auto object-contain rounded-full shadow-lg shadow-indigo-500/20" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="CODE CROW AI Logo">
-                    <span class="font-bold text-xl tracking-tight text-white hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">CODE CROW</span>
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" 
+                         alt="LBRCE Events Portal Logo" 
+                         class="h-12 w-auto object-contain">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg leading-tight text-gray-900 tracking-tight">LBRCE Events</span>
+                        <span class="text-xs text-gray-500 font-medium">Official Portal</span>
+                    </div>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#hero" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Home</a>
-                    <a href="#about" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">About</a>
-                    <a href="#dates" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Dates</a>
-                    <a href="#contact" class="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">Contact</a>
-                    <button onclick="openModal('register-modal')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transform hover:-translate-y-0.5">
-                        Register
-                    </button>
+                    <a href="#about" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">About</a>
+                    <a href="#process" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">How it Works</a>
+                    <a href="#events" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Events</a>
+                    <a href="#contact" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Contact</a>
+                    <a href="#events" class="bg-lbrce-blue text-white px-5 py-2.5 rounded-full font-medium hover:bg-blue-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Find Events
+                    </a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2 transition-colors" aria-label="Open menu">
-                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                        <i class="ph ph-list text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="#hero" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Home</a>
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">About</a>
-                <a href="#dates" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Dates</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">Contact</a>
-                <button onclick="openModal('register-modal'); toggleMobileMenu()" class="w-full text-left px-3 py-3 text-base font-bold text-indigo-400 hover:text-indigo-300 hover:bg-slate-800 rounded-lg transition-colors">
-                    Register Now
-                </button>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">About</a>
+                <a href="#process" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">How it Works</a>
+                <a href="#events" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Upcoming Events</a>
+                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Canvas Background -->
-        <canvas id="particle-canvas" class="absolute inset-0 z-0 opacity-40"></canvas>
-
-        <!-- Background Gradient Orbs -->
-        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 h-full z-0 pointer-events-none">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/30 rounded-full blur-[120px] animate-pulse-slow"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1.5s;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-[-50px]">
-            <div class="animate-fade-in-up">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-indigo-500/30 text-indigo-300 text-xs font-bold tracking-wide uppercase mb-8 shadow-lg backdrop-blur-sm">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                    </span>
-                    Event Date: February 13, 2026
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 drop-shadow-2xl">
-                    CODE CROW <br class="hidden md:block" />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 animate-gradient-x">AI HACKATHON</span>
-                </h1>
-                
-                <p class="mt-4 text-lg md:text-2xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-                    Innovate. Learn. Solve. <br class="md:hidden">
-                    <span class="text-slate-400">Join the ultimate college-level challenge to build real-world AI solutions.</span>
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                    <button onclick="openModal('register-modal')" class="group relative w-full sm:w-auto px-10 py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg transition-all shadow-[0_10px_40px_-10px_rgba(99,102,241,0.5)] hover:bg-indigo-700 hover:shadow-[0_20px_40px_-10px_rgba(99,102,241,0.6)] hover:-translate-y-1 overflow-hidden">
-                        <span class="relative z-10 flex items-center justify-center gap-2">
-                            Register Now <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
-                    </button>
-                    
-                    <a href="#about" class="w-full sm:w-auto px-10 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl font-medium text-lg transition-all backdrop-blur-md">
-                        Learn More
-                    </a>
-                </div>
-                
-                <p class="mt-8 text-sm text-slate-400 font-mono">
-                    Registration: <span class="text-indigo-400 font-bold">Feb 3 - Feb 11</span>
-                </p>
-            </div>
+    <!-- HERO SECTION -->
+    <header class="relative pt-36 pb-24 lg:pt-52 lg:pb-40 overflow-hidden bg-gray-900 flex items-center justify-center min-h-[80vh]">
+        <!-- Background Image & Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769924817/admin-block_kgxvrc.jpg" 
+                alt="LBRCE Admin Block" 
+                class="w-full h-full object-cover"
+            >
+            <!-- Brand Color Overlay -->
+            <div class="absolute inset-0 bg-lbrce-blue/90 mix-blend-multiply"></div>
+            <!-- Radial Gradient for depth -->
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-transparent to-transparent"></div>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50 hidden md:block">
-            <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+            <!-- Typography Upgrade -->
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 drop-shadow-md leading-tight animate-fade-in-up">
+                LBRCE Events & <br class="hidden lg:block" /> Registrations Portal
+            </h1>
+            
+            <p class="mt-2 max-w-2xl mx-auto text-lg md:text-2xl font-medium text-blue-100 mb-10 animate-fade-in-up leading-relaxed opacity-90" style="animation-delay: 0.1s;">
+                Official platform for all events conducted at <br/><span class="font-semibold text-white">Lakireddy Bali Reddy College of Engineering</span>.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up w-full max-w-lg mx-auto" style="animation-delay: 0.2s;">
+                <a href="#events" class="flex-1 px-8 py-4 bg-white text-lbrce-blue text-lg font-bold rounded-full shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all transform hover:-translate-y-1 text-center">
+                    View Upcoming Events
+                </a>
+                <a href="#about" class="flex-1 px-8 py-4 bg-transparent border-2 border-white/30 text-white text-lg font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm text-center">
+                    Registrations Opening Soon
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-slate-900 border-t border-slate-800/50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">About The Event</h2>
-            <div class="bg-slate-800/50 p-8 md:p-12 rounded-2xl border border-slate-700 shadow-xl backdrop-blur-sm">
-                <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-light">
-                    <strong class="text-indigo-400">CODE CROW AI Hackathon</strong> is a premier offline event designed to bridge the gap between theoretical knowledge and practical application. We invite college students from all backgrounds to collaborate, innovate, and build AI-driven solutions for contemporary challenges. Whether you are a coding novice or a machine learning enthusiast, this platform offers a unique opportunity to test your skills in a high-energy environment.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Important Dates -->
-    <section id="dates" class="py-24 bg-slate-900 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center reveal">Event Timeline</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-2xl reveal hover:border-indigo-500/50 transition-all duration-300 hover:transform hover:-translate-y-2 group">
-                    <div class="w-14 h-14 bg-indigo-900/30 rounded-xl flex items-center justify-center mb-6 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <i data-lucide="unlock" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Registration Opens</h3>
-                    <p class="text-slate-400 mb-4 text-sm">Be ready to secure your spot.</p>
-                    <div class="text-3xl font-black text-white bg-slate-800 inline-block px-4 py-2 rounded-lg border border-slate-700">Feb 3</div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-2xl reveal hover:border-red-500/50 transition-all duration-300 hover:transform hover:-translate-y-2 group" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 bg-red-900/20 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                        <i data-lucide="lock" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Registration Closes</h3>
-                    <p class="text-slate-400 mb-4 text-sm">Last chance to participate.</p>
-                    <div class="text-3xl font-black text-white bg-slate-800 inline-block px-4 py-2 rounded-lg border border-slate-700">Feb 11</div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-gradient-to-br from-indigo-600 to-violet-700 p-8 rounded-2xl reveal shadow-2xl shadow-indigo-500/20 transform md:scale-105" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white backdrop-blur-sm">
-                        <i data-lucide="trophy" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Hackathon Day</h3>
-                    <p class="text-indigo-100 mb-4 text-sm">The main event begins.</p>
-                    <div class="text-3xl font-black text-indigo-600 bg-white inline-block px-4 py-2 rounded-lg shadow-lg">Feb 13</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Participate -->
-    <section id="benefits" class="py-24 bg-slate-900 border-t border-slate-800/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center reveal">Why Join Us?</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Benefit Items -->
-                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
-                            <i data-lucide="cpu" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg">Hands-on AI Experience</h4>
-                            <p class="text-slate-400 text-sm mt-2">Work with real datasets and cutting-edge AI models.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 50ms;">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
-                            <i data-lucide="award" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg">Official Certificate</h4>
-                            <p class="text-slate-400 text-sm mt-2">Verified certificate of participation for your resume.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 100ms;">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
-                            <i data-lucide="briefcase" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg">Industry Exposure</h4>
-                            <p class="text-slate-400 text-sm mt-2">Network with industry mentors and tech leaders.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 150ms;">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
-                            <i data-lucide="users" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg">Team Collaboration</h4>
-                            <p class="text-slate-400 text-sm mt-2">Build synergy and solve problems with peers.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal hover:bg-slate-800 transition-colors" style="transition-delay: 200ms;">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-slate-900 p-3 rounded-lg text-indigo-400 shrink-0 border border-slate-700">
-                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-lg">Problem Solving</h4>
-                            <p class="text-slate-400 text-sm mt-2">Tackle complex logic and design challenges.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Registration CTA Section -->
-    <section class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-indigo-900/20"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Innovate?</h2>
-            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">Registration spots are limited. Ensure you have read the terms and conditions before proceeding with the payment.</p>
-            <button onclick="openModal('register-modal')" class="bg-white text-indigo-900 hover:bg-slate-200 font-bold py-4 px-12 rounded-full shadow-xl transition-all hover:scale-105 text-lg">
-                Register Now
-            </button>
-        </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center gap-2 mb-6">
-                        <img class="h-10 w-auto opacity-90 rounded-full" src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" alt="Logo">
-                        <span class="text-white font-bold text-xl">CODE CROW</span>
-                    </div>
-                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed mb-6">
-                        Empowering the next generation of AI developers through competition, collaboration, and innovation. Join the revolution.
+    <!-- DEVELOPMENT NOTICE -->
+    <div class="bg-lbrce-accent/10 border-b border-lbrce-accent/20">
+        <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center flex-wrap">
+                <div class="w-0 flex-1 flex items-center justify-center">
+                    <span class="flex p-2 rounded-lg bg-lbrce-accent text-white">
+                        <i class="ph ph-cone text-xl"></i>
+                    </span>
+                    <p class="ml-3 font-medium text-yellow-800 truncate">
+                        <span class="md:hidden">Portal Under Development.</span>
+                        <span class="hidden md:inline">This portal is under active development. More events, registrations, and dashboards will be available soon.</span>
                     </p>
-                    <div class="flex space-x-4">
-                         <!-- Social Placeholders -->
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center mb-16">
+                    <h2 class="text-base text-lbrce-blue font-bold tracking-wide uppercase mb-2">One Campus, One Platform</h2>
+                    <p class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        About the Portal
+                    </p>
+                    <p class="mt-4 max-w-3xl text-xl text-gray-500 lg:mx-auto">
+                        This website serves as the centralized hub for LBRCE's vibrant campus life. We bring together technical excellence, cultural diversity, and academic growth into one easy-to-use platform.
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        <!-- Feature 1 -->
+                        <div class="pt-6">
+                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
+                                <div class="-mt-6">
+                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
+                                        <i class="ph ph-code text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Technical Events</h3>
+                                    <p class="mt-5 text-base text-gray-500">
+                                        Challenge yourself with department-led hackathons, coding contests, paper presentations, and project expos designed to push boundaries.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="pt-6">
+                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
+                                <div class="-mt-6">
+                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
+                                        <i class="ph ph-confetti text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Cultural Fests</h3>
+                                    <p class="mt-5 text-base text-gray-500">
+                                        Immerse yourself in annual fests, flash mobs, art exhibitions, and musical nights that celebrate the creative spirit of LBRCE.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="pt-6">
+                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
+                                <div class="-mt-6">
+                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
+                                        <i class="ph ph-chalkboard-teacher text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Workshops</h3>
+                                    <p class="mt-5 text-base text-gray-500">
+                                        Gain hands-on experience through training sessions and guest lectures from industry experts and distinguished alumni.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section id="process" class="py-20 bg-lbrce-blue text-white relative overflow-hidden">
+            <!-- Background accent -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white opacity-5"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-white opacity-5"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold">How It Works</h2>
+                    <p class="mt-2 text-blue-100 text-lg">Your journey from registration to certification in 3 simple steps</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="p-6">
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
+                            <i class="ph ph-magnifying-glass"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">1. Discover</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed">Browse through a wide range of upcoming technical and cultural events listed on the portal.</p>
+                    </div>
+                    <div class="p-6 relative">
+                        <!-- Arrow for desktop -->
+                        <div class="hidden md:block absolute top-1/2 right-0 -mr-6 text-white/20 transform -translate-y-1/2">
+                            <i class="ph ph-caret-right text-5xl"></i>
+                        </div>
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
+                            <i class="ph ph-user-plus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">2. Register</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed">Sign up quickly using your student details. Secure your spot before slots run out.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
+                            <i class="ph ph-certificate"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">3. Participate</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed">Attend the event, gain skills, and receive digital certificates directly through your profile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPCOMING EVENTS SECTION -->
+        <section id="events" class="py-20 bg-gray-50 border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Upcoming Events</h2>
+                        <p class="mt-1 text-gray-500">Don't miss out on these opportunities</p>
+                    </div>
+                    <span class="hidden sm:inline-block px-4 py-2 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full animate-pulse">Live Updates</span>
+                </div>
+
+                <!-- Featured Event Layout -->
+                <div class="grid gap-10">
+                    <!-- Event Card: CODE CROW AI -->
+                    <article class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row hover:shadow-2xl transition-shadow duration-300">
+                        <!-- Image Container -->
+                        <div class="lg:w-2/5 relative h-72 lg:h-auto overflow-hidden group">
+                            <img 
+                                src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" 
+                                alt="CODE CROW AI Hackathon 2026 Poster" 
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            >
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-lbrce-accent text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-wide">Featured</span>
+                            </div>
+                        </div>
+
+                        <!-- Content Container -->
+                        <div class="lg:w-3/5 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-semibold text-lbrce-blue bg-blue-50 px-3 py-1 rounded-md border border-blue-100">
+                                        Technical / Hackathon
+                                    </span>
+                                    <span class="flex items-center text-gray-500 text-sm font-medium">
+                                        <i class="ph ph-map-pin mr-1 text-lg"></i> Offline Mode
+                                    </span>
+                                </div>
+
+                                <h3 class="text-2xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                                    CODE CROW AI Hackathon 2026
+                                </h3>
+                                
+                                <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                                    Join us for a premier college-level AI hackathon focused on innovation, problem-solving, and real-world AI applications. Compete with the best minds at LBRCE to build transformative solutions.
+                                </p>
+
+                                <!-- Event Details Grid -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                                    <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <i class="ph ph-calendar-check text-lbrce-blue text-2xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="text-sm font-bold text-gray-900">Event Date</p>
+                                            <p class="text-sm text-gray-600">13 February 2026</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <i class="ph ph-clock text-lbrce-blue text-2xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="text-sm font-bold text-gray-900">Registration Window</p>
+                                            <p class="text-sm text-gray-600">3 Feb – 11 Feb 2026</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <p class="text-sm text-gray-500 italic">
+                                    *Limited seats available for offline participation.
+                                </p>
+                                <button disabled class="w-full sm:w-auto px-8 py-3 bg-gray-100 text-gray-400 font-bold rounded-lg cursor-not-allowed flex items-center justify-center gap-2 border border-gray-200">
+                                    <i class="ph ph-lock-key"></i> Registration Opens Soon
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAMPUS COMMUNITIES SECTION (SCROLLING - UPDATED) -->
+        <section class="py-16 bg-white border-t border-gray-100 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
+                <p class="text-gray-500 font-semibold uppercase tracking-widest text-sm">Powered by LBRCE Communities</p>
+            </div>
+            
+            <div class="relative overflow-hidden w-full group">
+                <!-- Wrapper for scrolling animation - duplicated content for seamless loop -->
+                <!-- UPDATED: Removed justify-around, added gap-24 for equal spacing -->
+                <div class="flex animate-scroll hover:animate-[scroll_40s_linear_infinite_paused] w-max gap-24">
+                    
+                    <!-- Single Set of Logos Function -->
+                    <!-- Note: We repeat this content twice within the flex container to create the loop, 
+                         but using a loop in HTML without a template engine requires copy-pasting. 
+                         The gap-24 ensures equal spacing between items AND between the sets. -->
+
+                    <!-- SET 1 -->
+                    <div class="flex items-center gap-24 px-12">
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/saheli_club/images/saheli_logo.jpg" alt="Saheli Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Saheli Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/prakruthi_club/images/prakruthi_logo.png" alt="Prakruthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Prakruthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/spoorthi_club/images/spoorthi_logo.jpg" alt="Spoorthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Spoorthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/kruthi_club/images/kruthi_logo.jpg" alt="Kruthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Kruthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/central/nss/images/nsslogo.jpg" alt="NSS Unit" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">NSS Unit</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/images/stud_resources/IEEE-LBRCE-CIS-LOGO%20FINAL.png" alt="IEEE CIS" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">IEEE CIS</p>
+                        </div>
+                    </div>
+                    
+                    <!-- SET 2 (Exact Duplicate for Loop) -->
+                    <div class="flex items-center gap-24 px-12">
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/saheli_club/images/saheli_logo.jpg" alt="Saheli Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Saheli Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/prakruthi_club/images/prakruthi_logo.png" alt="Prakruthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Prakruthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/spoorthi_club/images/spoorthi_logo.jpg" alt="Spoorthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Spoorthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/clubs/kruthi_club/images/kruthi_logo.jpg" alt="Kruthi Club" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">Kruthi Club</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/central/nss/images/nsslogo.jpg" alt="NSS Unit" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">NSS Unit</p>
+                        </div>
+                        <div class="flex flex-col items-center flex-shrink-0 w-32">
+                            <img src="https://lbrce.ac.in/images/stud_resources/IEEE-LBRCE-CIS-LOGO%20FINAL.png" alt="IEEE CIS" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110">
+                            <p class="mt-3 text-xs text-gray-600 font-bold">IEEE CIS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">LBRCE Events</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        The official centralized platform for all events, registrations, and student activities at Lakireddy Bali Reddy College of Engineering.
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Home</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white text-sm transition-colors">Upcoming Events</a></li>
+                        <li><a href="https://www.lbrce.ac.in/" target="_blank" class="text-gray-400 hover:text-white text-sm transition-colors">Main College Website</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Student Login (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <i class="ph ph-map-pin text-xl text-gray-500"></i>
+                            <span>L.B.Reddy Nagar, Mylavaram,<br>Krishna District, Andhra Pradesh - 521230</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400">
+                            <i class="ph ph-envelope text-xl text-gray-500"></i>
+                            <a href="mailto:events@lbrce.ac.in" class="hover:text-white">events@lbrce.ac.in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex flex-col items-center md:items-start text-sm text-gray-500 w-full">
+                    <p class="text-center md:text-left mb-4 md:mb-0">
+                        &copy; 2026 Xeta Tech Solutions. All rights reserved.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800 w-full md:w-auto text-center md:text-left">
+                        <span class="text-gray-400">Designed, Developed & Maintained by </span>
+                        <a href="https://xetasolutions.in" target="_blank" class="text-lbrce-accent hover:text-yellow-400 font-bold hover:underline transition-colors block sm:inline mt-1 sm:mt-0">
+                            Xeta Tech Solutions
+                        </a>.
                     </div>
                 </div>
                 
-                <div class="md:text-right">
-                    <h3 class="text-white font-bold text-lg mb-6">Contact Us</h3>
-                    <div class="space-y-4">
-                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
-                            <i data-lucide="building-2" class="w-4 h-4"></i>
-                            LAKIREDDY BALI REDDY COLLEGE OF ENGINEERING
-                        </p>
-                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            <a href="mailto:kotagirimidhun@gmail.com" class="hover:text-indigo-400 transition-colors">kotagirimidhun@gmail.com</a>
-                        </p>
-                        <p class="text-slate-400 text-sm flex md:justify-end items-center gap-2">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                            +91 9010408899
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-                <div class="flex flex-col gap-1">
-                    <p class="text-slate-600 text-xs">
-                        &copy; 2026 CODE CROW AI Hackathon. All rights reserved.
-                    </p>
-                    <p class="text-slate-600 text-xs">
-                        Designed & Developed by <a href="https://xetasolutions.in" target="_blank" class="text-indigo-500 hover:text-indigo-400 font-semibold transition-colors">Xeta Tech Solutions</a>
-                    </p>
-                </div>
-                <div class="flex space-x-6">
-                    <button onclick="openModal('privacy-modal')" class="text-slate-600 hover:text-indigo-400 transition-colors text-xs font-medium">Privacy Policy</button>
-                    <button onclick="openModal('terms-modal')" class="text-slate-600 hover:text-indigo-400 transition-colors text-xs font-medium">Terms of Service</button>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="ph ph-linkedin-logo text-xl"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ==================== MODALS ==================== -->
-
-    <!-- Registration Modal -->
-    <div id="register-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('register-modal')"></div>
-        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg relative shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            
-            <!-- Header -->
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-800/50">
-                <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                    <i data-lucide="user-plus" class="w-5 h-5 text-indigo-500"></i> Registration
-                </h3>
-                <button onclick="closeModal('register-modal')" class="text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-
-            <!-- Body (Scrollable) -->
-            <div class="p-6 overflow-y-auto custom-scrollbar">
-                <div class="bg-indigo-900/20 border border-indigo-500/30 rounded-lg p-4 mb-6">
-                    <h4 class="text-indigo-300 font-semibold mb-2 flex items-center gap-2">
-                        <i data-lucide="alert-circle" class="w-4 h-4"></i> Important Notice
-                    </h4>
-                    <p class="text-sm text-slate-300">
-                        Registration requires an online payment. By proceeding, you agree to the terms below.
-                    </p>
-                </div>
-
-                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Payment Terms</h4>
-                <ul class="space-y-3 mb-6">
-                    <li class="flex items-start gap-3 text-sm text-slate-400">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
-                        <span>Registration fee is <strong>non-refundable</strong>.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-sm text-slate-400">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
-                        <span>Payment cannot be reversed once completed.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-sm text-slate-400">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
-                        <span>Organizer is not responsible for bank network failures.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-sm text-slate-400">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-slate-600 mt-1 shrink-0"></i>
-                        <span>Correct details must be provided.</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Footer -->
-            <div class="p-6 border-t border-slate-800 bg-slate-900">
-                <button onclick="alert('Registration opens on Feb 3, 2026!'); closeModal('register-modal')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg hover:shadow-indigo-500/25">
-                    Agree & Proceed to Pay
-                </button>
-                <p class="text-center text-xs text-slate-500 mt-3">Gateway opens Feb 3, 2026</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Privacy Policy Modal -->
-    <div id="privacy-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('privacy-modal')"></div>
-        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl relative shadow-2xl flex flex-col max-h-[80vh]">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
-                <button onclick="closeModal('privacy-modal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="p-6 overflow-y-auto text-slate-300 text-sm leading-relaxed space-y-4">
-                <p><strong>1. Information Collection:</strong> We collect personal information such as name, email, college name, and phone number during registration.</p>
-                <p><strong>2. Use of Information:</strong> This data is used solely for event coordination, certification, and communication regarding Code Crow updates.</p>
-                <p><strong>3. Data Protection:</strong> We implement security measures to maintain the safety of your personal information. We do not sell or trade your data to outside parties.</p>
-                <p><strong>4. Media:</strong> Photographs and videos taken during the event may be used for promotional purposes on our social media and website.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terms Modal -->
-    <div id="terms-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center px-4">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('terms-modal')"></div>
-        <div class="modal-content bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl relative shadow-2xl flex flex-col max-h-[80vh]">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-white">Terms of Service</h3>
-                <button onclick="closeModal('terms-modal')" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="p-6 overflow-y-auto text-slate-300 text-sm leading-relaxed space-y-4">
-                <p><strong>1. Eligibility:</strong> Participants must be currently enrolled in a college/university. Valid ID cards are mandatory.</p>
-                <p><strong>2. Conduct:</strong> All participants are expected to maintain a professional environment. Harassment of any kind will result in immediate disqualification.</p>
-                <p><strong>3. Intellectual Property:</strong> Projects created during the hackathon belong to the team. However, Code Crow reserves the right to showcase the projects.</p>
-                <p><strong>4. Disqualification:</strong> Plagiarism or usage of pre-built projects will lead to disqualification.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
+    <!-- INTERACTION SCRIPTS -->
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
         // Preloader Logic
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
+            const body = document.body;
+            
+            // Short timeout to ensure the animation is seen for a moment
             setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-            }, 1000); // 1 second delay for effect
+                preloader.classList.add('hidden');
+                body.classList.remove('loading');
+                
+                // Remove from DOM after fade out transition
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 1500);
         });
 
         // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
-        }
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
 
-        menuBtn.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu on link click
+        // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                menu.classList.add('hidden');
             });
         });
 
-        // Modal Logic
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        // Close modal on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(modal => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
+        // Navbar Scroll Effect (Glassmorphism intensity change)
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
             }
         });
-
-        // Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once
-
-        /* ================= PARTICLE NETWORK ANIMATION ================= */
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        
-        // Configuration
-        const particleCount = window.innerWidth < 768 ? 40 : 80; // Fewer particles on mobile
-        const connectionDistance = 150;
-        const particleSpeed = 0.5;
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * particleSpeed;
-                this.vy = (Math.random() - 0.5) * particleSpeed;
-                this.size = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Bounce off edges
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = 'rgba(129, 140, 248, 0.5)'; // Indigo color
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, width, height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                // Draw connections
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(129, 140, 248, ${1 - distance / connectionDistance})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', () => {
-            resize();
-            initParticles();
-        });
-
-        // Initialize
-        resize();
-        initParticles();
-        animateParticles();
-
     </script>
 </body>
 </html>
