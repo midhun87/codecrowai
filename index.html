@@ -49,7 +49,6 @@
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'scroll': 'scroll 40s linear infinite',
                     },
                     keyframes: {
@@ -68,7 +67,7 @@
     </script>
 
     <style>
-        /* Custom scrollbar for webkit */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -83,30 +82,28 @@
             background: #94a3b8;
         }
         
-        /* Glassmorphism utility */
         .glass-nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* UPGRADED PRELOADER STYLES */
+        /* PREMIUM SINGLE-LOGO PRELOADER STYLES */
         #preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #ffffff;
+            background-color: #0f172a; /* Sleek dark background */
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
         }
         
         #preloader.loaded {
-            transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
         }
@@ -114,68 +111,101 @@
         .loader-content {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Corrected alignment */
+            align-items: center;
             justify-content: center;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); filter: blur(10px); }
-            to { opacity: 1; transform: scale(1); filter: blur(0); }
-        }
-
-        .loader-logo {
-            animation: logo-float 3s ease-in-out infinite;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @keyframes logo-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .loader-progress-bg {
-            width: 200px;
-            height: 2px;
-            background: #f1f5f9;
-            border-radius: 4px;
-            margin: 30px auto 0 auto; /* Centered progress bg */
-            overflow: hidden;
+        .logo-container {
             position: relative;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
-        .loader-progress-bar {
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255,184,0,0.3));
+        }
+
+        .spinner-ring {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #FFB800, #003366);
-            transition: width 0.4s ease-out;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #FFB800;
+            border-bottom-color: #003366;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            z-index: 1;
         }
         
-        /* Hide content initially to prevent FOUC */
+        .spinner-ring::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-left-color: #38bdf8;
+            border-right-color: #38bdf8;
+            animation: spin 2s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .loader-text {
+            color: #f8fafc;
+            font-size: 0.875rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 1rem;
+            opacity: 0.8;
+            animation: pulse-text 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        }
+
         body.loading {
             overflow: hidden;
+        }
+        
+        /* Modern Grid Background Pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen loading">
 
-    <!-- UPGRADED PRELOADER -->
+    <!-- PREMIUM PRELOADER -->
     <div id="preloader">
         <div class="loader-content">
-            <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" 
-                 alt="LBRCE Logo" 
-                 class="w-32 md:w-40 h-auto mb-6 loader-logo drop-shadow-2xl">
-            <div class="loader-progress-bg">
-                <div class="loader-progress-bar" id="load-bar"></div>
+            <div class="logo-container">
+                <div class="spinner-ring"></div>
+                <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" alt="LBRCE Logo">
             </div>
-            <p class="mt-4 text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">Lakireddy Bali Reddy College</p>
+            <p class="loader-text">Loading Portal</p>
         </div>
     </div>
 
@@ -196,12 +226,13 @@
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">About</a>
-                    <a href="#process" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">How it Works</a>
-                    <a href="#events" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Events</a>
+                    <a href="#features" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Upcoming Features</a>
+                    <a href="#recent-events" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Recent Events</a>
+                    <a href="#communities" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Communities</a>
+                    <a href="https://events-lbrce.in/support" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors flex items-center gap-1"><i class="ph-fill ph-headset"></i> Support</a>
                     <a href="#contact" class="text-gray-600 hover:text-lbrce-blue font-medium transition-colors">Contact</a>
-                    <a href="#events" class="bg-lbrce-blue text-white px-5 py-2.5 rounded-full font-medium hover:bg-blue-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                        Find Events
+                    <a href="#features" class="bg-lbrce-blue text-white px-5 py-2.5 rounded-full font-medium hover:bg-blue-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Portal Launching Soon
                     </a>
                 </div>
 
@@ -217,251 +248,139 @@
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">About</a>
-                <a href="#process" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">How it Works</a>
-                <a href="#events" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Upcoming Events</a>
+                <a href="#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Upcoming Features</a>
+                <a href="#recent-events" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Recent Events</a>
+                <a href="#communities" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Communities</a>
+                <a href="https://events-lbrce.in/support" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue"><i class="ph-fill ph-headset inline-block mr-2"></i> Support</a>
                 <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-lbrce-blue">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative pt-36 pb-24 lg:pt-52 lg:pb-40 overflow-hidden bg-gray-900 flex items-center justify-center min-h-[80vh]">
-        <!-- Background Image & Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769924817/admin-block_kgxvrc.jpg" 
-                alt="LBRCE Admin Block" 
-                class="w-full h-full object-cover"
-            >
-            <!-- Brand Color Overlay -->
-            <div class="absolute inset-0 bg-lbrce-blue/90 mix-blend-multiply"></div>
-            <!-- Radial Gradient for depth -->
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-transparent to-transparent"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
-            <!-- Typography Upgrade -->
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 drop-shadow-md leading-tight animate-fade-in-up">
-                LBRCE Events & <br class="hidden lg:block" /> Registrations Portal
-            </h1>
-            
-            <p class="mt-2 max-w-2xl mx-auto text-lg md:text-2xl font-medium text-blue-100 mb-10 animate-fade-in-up leading-relaxed opacity-90" style="animation-delay: 0.1s;">
-                Official platform for all events conducted at <br/><span class="font-semibold text-white">Lakireddy Bali Reddy College of Engineering</span>.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up w-full max-w-lg mx-auto" style="animation-delay: 0.2s;">
-                <a href="#events" class="flex-1 px-8 py-4 bg-white text-lbrce-blue text-lg font-bold rounded-full shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all transform hover:-translate-y-1 text-center">
-                    View Upcoming Events
-                </a>
-                <a href="#about" class="flex-1 px-8 py-4 bg-transparent border-2 border-white/30 text-white text-lg font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm text-center">
-                    Registrations Opening Soon
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- DEVELOPMENT NOTICE -->
-    <div class="bg-lbrce-accent/10 border-b border-lbrce-accent/20">
+    <!-- DEVELOPMENT NOTICE BANNER -->
+    <div class="bg-lbrce-accent/20 border-b border-lbrce-accent/30 pt-20">
         <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center flex-wrap">
-                <div class="w-0 flex-1 flex items-center justify-center">
-                    <span class="flex p-2 rounded-lg bg-lbrce-accent text-white">
-                        <i class="ph ph-cone text-xl"></i>
+                <div class="w-0 flex-1 flex items-center justify-center text-center">
+                    <span class="flex p-2 rounded-lg bg-lbrce-accent text-white shadow-sm">
+                        <i class="ph ph-rocket-launch text-xl"></i>
                     </span>
-                    <p class="ml-3 font-medium text-yellow-800 truncate">
-                        <span class="md:hidden">Portal Under Development.</span>
-                        <span class="hidden md:inline">This portal is under active development. More events, registrations, and dashboards will be available soon.</span>
+                    <p class="ml-3 font-semibold text-yellow-900">
+                        <span class="md:hidden">Portal Under Development. Launching soon!</span>
+                        <span class="hidden md:inline">Exciting update! The ultimate unified portal for all LBRCE events is currently under development and launching soon.</span>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- HERO SECTION -->
+    <header class="relative py-32 lg:py-48 overflow-hidden bg-gray-950 flex items-center justify-center">
+        <!-- Background Image & Modern Overlays -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769924817/admin-block_kgxvrc.jpg" 
+                alt="LBRCE Admin Block" 
+                class="w-full h-full object-cover scale-105 transform motion-safe:animate-[pulse-slow_15s_ease-in-out_infinite]"
+            >
+            <div class="absolute inset-0 bg-lbrce-blue/80 mix-blend-multiply"></div>
+            <!-- Decorative Gradients for "Attractive" Look -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-lbrce-accent/20 rounded-full blur-[150px] translate-y-1/3 -translate-x-1/4"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-gray-900/50"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+            <span class="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-lbrce-accent text-sm font-bold tracking-widest mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(255,184,0,0.1)]">
+                COMING SOON: THE ALL-IN-ONE PLATFORM
+            </span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-300 mb-6 drop-shadow-2xl leading-[1.1] animate-fade-in-up">
+                LBRCE Events & <br class="hidden md:block" /> Registrations Portal
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-2xl font-medium text-blue-100/90 mb-12 animate-fade-in-up leading-relaxed" style="animation-delay: 0.1s;">
+                Get ready for a seamless event experience at Lakireddy Bali Reddy College of Engineering. Everything you need, centralized in one place.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-up w-full max-w-lg mx-auto" style="animation-delay: 0.2s;">
+                <a href="#features" class="flex-1 px-8 py-4 bg-gradient-to-r from-lbrce-accent to-yellow-500 text-gray-900 text-lg font-bold rounded-full shadow-[0_10px_30px_rgba(255,184,0,0.3)] hover:shadow-[0_15px_40px_rgba(255,184,0,0.5)] hover:scale-105 transition-all duration-300 text-center">
+                    Explore New Features
+                </a>
+                <a href="#recent-events" class="flex-1 px-8 py-4 bg-white/10 border border-white/20 text-white text-lg font-bold rounded-full hover:bg-white/20 hover:border-white/40 transition-all duration-300 backdrop-blur-md text-center hover:scale-105 shadow-lg">
+                    View Recent Events
+                </a>
+            </div>
+        </div>
+    </header>
+
     <main class="flex-grow">
-        <!-- ABOUT SECTION -->
-        <section id="about" class="py-20 bg-white">
+
+        <!-- RECENT EVENTS (COMPLETED) SECTION -->
+        <section id="recent-events" class="py-20 bg-gray-50 border-t border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:text-center mb-16">
-                    <h2 class="text-base text-lbrce-blue font-bold tracking-wide uppercase mb-2">One Campus, One Platform</h2>
-                    <p class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        About the Portal
-                    </p>
-                    <p class="mt-4 max-w-3xl text-xl text-gray-500 lg:mx-auto">
-                        This website serves as the centralized hub for LBRCE's vibrant campus life. We bring together technical excellence, cultural diversity, and academic growth into one easy-to-use platform.
-                    </p>
-                </div>
-
-                <div class="mt-10">
-                    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        <!-- Feature 1 -->
-                        <div class="pt-6">
-                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
-                                <div class="-mt-6">
-                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
-                                        <i class="ph ph-code text-white text-2xl"></i>
-                                    </div>
-                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Technical Events</h3>
-                                    <p class="mt-5 text-base text-gray-500">
-                                        Challenge yourself with department-led hackathons, coding contests, paper presentations, and project expos designed to push boundaries.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feature 2 -->
-                        <div class="pt-6">
-                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
-                                <div class="-mt-6">
-                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
-                                        <i class="ph ph-confetti text-white text-2xl"></i>
-                                    </div>
-                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Cultural Fests</h3>
-                                    <p class="mt-5 text-base text-gray-500">
-                                        Immerse yourself in annual fests, flash mobs, art exhibitions, and musical nights that celebrate the creative spirit of LBRCE.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feature 3 -->
-                        <div class="pt-6">
-                            <div class="flow-root bg-gray-50 rounded-2xl px-6 pb-8 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-gray-100">
-                                <div class="-mt-6">
-                                    <div class="inline-flex items-center justify-center p-3 bg-lbrce-blue rounded-xl shadow-lg">
-                                        <i class="ph ph-chalkboard-teacher text-white text-2xl"></i>
-                                    </div>
-                                    <h3 class="mt-8 text-lg font-bold text-gray-900 tracking-tight">Workshops</h3>
-                                    <p class="mt-5 text-base text-gray-500">
-                                        Gain hands-on experience through training sessions and guest lectures from industry experts and distinguished alumni.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HOW IT WORKS SECTION -->
-        <section id="process" class="py-20 bg-lbrce-blue text-white relative overflow-hidden">
-            <!-- Background accent -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white opacity-5"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-white opacity-5"></div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold">How It Works</h2>
-                    <p class="mt-2 text-blue-100 text-lg">Your journey from registration to certification in 3 simple steps</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div class="p-6">
-                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
-                            <i class="ph ph-magnifying-glass"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">1. Discover</h3>
-                        <p class="text-blue-100 text-sm leading-relaxed">Browse through a wide range of upcoming technical and cultural events listed on the portal.</p>
-                    </div>
-                    <div class="p-6 relative">
-                        <!-- Arrow for desktop -->
-                        <div class="hidden md:block absolute top-1/2 right-0 -mr-6 text-white/20 transform -translate-y-1/2">
-                            <i class="ph ph-caret-right text-5xl"></i>
-                        </div>
-                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
-                            <i class="ph ph-user-plus"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">2. Register</h3>
-                        <p class="text-blue-100 text-sm leading-relaxed">Sign up quickly using your student details. Secure your spot before slots run out.</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-lbrce-accent text-4xl shadow-inner">
-                            <i class="ph ph-certificate"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">3. Participate</h3>
-                        <p class="text-blue-100 text-sm leading-relaxed">Attend the event, gain skills, and receive digital certificates directly through your profile.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- UPCOMING EVENTS SECTION -->
-        <section id="events" class="py-20 bg-gray-50 border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between mb-12">
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Upcoming Events</h2>
-                        <p class="mt-1 text-gray-500">Don't miss out on these opportunities</p>
-                    </div>
-                    <span class="hidden sm:inline-block px-4 py-2 text-sm font-semibold text-blue-800 bg-blue-100 rounded-full animate-pulse">Live Updates</span>
+                    <h2 class="text-base text-lbrce-blue font-bold tracking-wide uppercase mb-2">Hall of Fame</h2>
+                    <p class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Recently Concluded Events
+                    </p>
+                    <p class="mt-4 max-w-2xl text-lg text-gray-500 mx-auto">
+                        A look back at our successfully hosted events, celebrating the massive participation, innovation, and our talented winners.
+                    </p>
                 </div>
 
-                <!-- Featured Event Layout -->
-                <div class="grid gap-10">
-                    <!-- Event Card: CODE CROW AI -->
-                    <article class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row hover:shadow-2xl transition-shadow duration-300">
+                <!-- Completed Event Card: CODE CROW AI -->
+                <div class="max-w-5xl mx-auto">
+                    <article class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row transition-shadow duration-300 relative">
+                        <!-- Success Banner Overlay -->
+                        <div class="absolute top-0 right-0 z-20 overflow-hidden w-32 h-32">
+                            <div class="absolute transform rotate-45 bg-green-500 text-white text-xs font-bold py-1 right-[-35px] top-[32px] w-[170px] text-center shadow-md">
+                                COMPLETED
+                            </div>
+                        </div>
+
                         <!-- Image Container -->
-                        <div class="lg:w-2/5 relative h-72 lg:h-auto overflow-hidden group">
+                        <div class="lg:w-2/5 relative h-80 lg:h-auto overflow-hidden group">
                             <img 
                                 src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769755433/codegrowai_bqbpk9.jpg" 
                                 alt="CODE CROW AI Hackathon 2026 Poster" 
-                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 filter saturate-[1.1]"
                             >
-                            <div class="absolute top-4 left-4">
-                                <span class="bg-lbrce-accent text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-wide">Featured</span>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="bg-white/90 backdrop-blur text-lbrce-blue text-xs font-bold px-3 py-1.5 rounded-md shadow-sm uppercase tracking-wide inline-flex items-center gap-1">
+                                    <i class="ph-fill ph-check-circle text-green-500 text-sm"></i> Successfully Hosted
+                                </span>
                             </div>
                         </div>
 
                         <!-- Content Container -->
-                        <div class="lg:w-3/5 p-8 flex flex-col justify-between">
+                        <div class="lg:w-3/5 p-8 sm:p-10 flex flex-col justify-between bg-white relative z-10">
                             <div>
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-sm font-semibold text-lbrce-blue bg-blue-50 px-3 py-1 rounded-md border border-blue-100">
-                                        Technical / Hackathon
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <span class="text-xs font-bold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                                        Hackathon
                                     </span>
-                                    <span class="flex items-center text-gray-500 text-sm font-medium">
-                                        <i class="ph ph-map-pin mr-1 text-lg"></i> Offline Mode
+                                    <span class="flex items-center text-blue-700 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold border border-blue-100">
+                                        <i class="ph-fill ph-users mr-1.5 text-sm"></i> 200+ Participants
                                     </span>
                                 </div>
 
-                                <h3 class="text-2xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                                <h3 class="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">
                                     CODE CROW AI Hackathon 2026
                                 </h3>
                                 
-                                <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                                    Join us for a premier college-level AI hackathon focused on innovation, problem-solving, and real-world AI applications. Compete with the best minds at LBRCE to build transformative solutions.
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    Our premier college-level AI hackathon was a massive success! Students collaborated offline to build transformative real-world AI applications, pushing the boundaries of innovation.
                                 </p>
-
-                                <!-- Event Details Grid -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                                    <div class="flex items-start p-3 bg-gray-50 rounded-lg">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <i class="ph ph-calendar-check text-lbrce-blue text-2xl"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="text-sm font-bold text-gray-900">Event Date</p>
-                                            <p class="text-sm text-gray-600">13 February 2026</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start p-3 bg-gray-50 rounded-lg">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <i class="ph ph-clock text-lbrce-blue text-2xl"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="text-sm font-bold text-gray-900">Registration Window</p>
-                                            <p class="text-sm text-gray-600">3 Feb – 11 Feb 2026</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
-                            <div class="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                                <p class="text-sm text-gray-500 italic">
-                                    *Limited seats available for offline participation.
+                            <div class="pt-5 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <p class="text-sm text-gray-500 font-medium bg-gray-50 px-4 py-2 rounded-lg">
+                                    <i class="ph ph-calendar-check mr-1 text-lbrce-blue"></i> Hosted on <span class="text-gray-900 font-bold">13 Feb 2026</span>
                                 </p>
-                                <button disabled class="w-full sm:w-auto px-8 py-3 bg-gray-100 text-gray-400 font-bold rounded-lg cursor-not-allowed flex items-center justify-center gap-2 border border-gray-200">
-                                    <i class="ph ph-lock-key"></i> Registration Opens Soon
-                                </button>
+                                <a href="https://events-lbrce.in/gallery" class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-lbrce-blue hover:to-blue-900 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                    View Gallery <i class="ph ph-arrow-right font-bold"></i>
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -469,8 +388,84 @@
             </div>
         </section>
 
+        <!-- UPCOMING FEATURES SECTION (PORTAL UNDER DEVELOPMENT) -->
+        <section id="features" class="py-24 bg-white relative overflow-hidden">
+            <!-- Decorative background pattern -->
+            <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] z-0"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:text-center mb-16">
+                    <h2 class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm text-lbrce-blue font-bold tracking-widest uppercase mb-4 shadow-sm">What's Coming Next</h2>
+                    <p class="text-4xl leading-tight font-black tracking-tight text-gray-900 sm:text-5xl drop-shadow-sm">
+                        A Unified Platform Experience
+                    </p>
+                    <p class="mt-6 max-w-3xl text-xl text-gray-600 lg:mx-auto leading-relaxed">
+                        We are building a comprehensive ecosystem to manage every aspect of your event participation. Soon, this portal will be your one-stop destination.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    
+                    <!-- Feature: Registrations -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,51,102,0.08)] hover:border-blue-100 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-user-plus text-3xl text-lbrce-blue"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">Seamless Registrations</h3>
+                        <p class="text-gray-600 leading-relaxed">Register for technical, cultural, and workshops instantly with your student profile. No more paperwork or manual forms.</p>
+                    </div>
+
+                    <!-- Feature: Payments -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(34,197,94,0.08)] hover:border-green-100 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-credit-card text-3xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">Integrated Payments</h3>
+                        <p class="text-gray-600 leading-relaxed">Secure, hassle-free online fee payments directly through the portal with instant receipt generation for all paid events.</p>
+                    </div>
+
+                    <!-- Feature: External Participants -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(147,51,234,0.08)] hover:border-purple-100 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-globe text-3xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">External Participation</h3>
+                        <p class="text-gray-600 leading-relaxed">Inviting talent globally! The platform will support cross-college registrations for specific allowed flagship events.</p>
+                    </div>
+
+                    <!-- Feature: Food Coupons -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(249,115,22,0.08)] hover:border-orange-100 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-hamburger text-3xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">Digital Food Coupons</h3>
+                        <p class="text-gray-600 leading-relaxed">Say goodbye to paper slips. Access QR-based digital food and refreshment coupons directly on your mobile device.</p>
+                    </div>
+
+                    <!-- Feature: Certificates -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(255,184,0,0.12)] hover:border-yellow-200 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-certificate text-3xl text-lbrce-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">E-Certificates</h3>
+                        <p class="text-gray-600 leading-relaxed">Automatically receive, download, and verify your participation or winner certificates from your personal dashboard.</p>
+                    </div>
+
+                    <!-- Feature: Support -->
+                    <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)] hover:border-blue-200 transition-all duration-300 group transform hover:-translate-y-1">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
+                            <i class="ph-fill ph-headset text-3xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-3">Dedicated Support</h3>
+                        <p class="text-gray-600 leading-relaxed">Got an issue? Raise queries directly through the platform and get fast resolutions from event coordinators.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- CAMPUS COMMUNITIES SECTION -->
-        <section class="py-16 bg-white border-t border-gray-100 overflow-hidden">
+        <section id="communities" class="py-16 bg-gray-50 border-t border-gray-200 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
                 <p class="text-gray-500 font-semibold uppercase tracking-widest text-sm">Powered by LBRCE Communities</p>
             </div>
@@ -546,7 +541,7 @@
                 <div>
                     <h3 class="text-xl font-bold text-white mb-4">LBRCE Events</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        The official centralized platform for all events, registrations, and student activities at Lakireddy Bali Reddy College of Engineering.
+                        The ultimate unified platform for all events, registrations, and student activities at Lakireddy Bali Reddy College of Engineering.
                     </p>
                 </div>
 
@@ -555,7 +550,8 @@
                     <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Home</a></li>
-                        <li><a href="#events" class="text-gray-400 hover:text-white text-sm transition-colors">Upcoming Events</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white text-sm transition-colors">Upcoming Features</a></li>
+                        <li><a href="#recent-events" class="text-gray-400 hover:text-white text-sm transition-colors">Recent Events</a></li>
                         <li><a href="https://www.lbrce.ac.in/" target="_blank" class="text-gray-400 hover:text-white text-sm transition-colors">Main College Website</a></li>
                     </ul>
                 </div>
@@ -576,17 +572,15 @@
                 </div>
             </div>
 
+            <!-- EXACT SPECIFIED FOOTER TEXT -->
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex flex-col items-center md:items-start text-sm text-gray-500 w-full">
-                    <p class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-center md:text-left mb-2">
                         &copy; 2026 Xeta Tech Solutions. All rights reserved.
                     </p>
-                    <div class="mt-4 pt-4 border-t border-gray-800 w-full md:w-auto text-center md:text-left">
-                        <span class="text-gray-400">Designed, Developed & Maintained by </span>
-                        <a href="https://xetasolutions.in" target="_blank" class="text-lbrce-accent hover:text-yellow-400 font-bold hover:underline transition-colors block sm:inline mt-1 sm:mt-0">
-                            Xeta Tech Solutions
-                        </a>.
-                    </div>
+                    <p class="text-center md:text-left">
+                        Designed, Developed & Maintained by <a href="https://xetasolutions.in" target="_blank" class="text-lbrce-accent hover:text-yellow-400 font-bold hover:underline transition-colors">Xeta Tech Solutions</a> .
+                    </p>
                 </div>
                 
                 <div class="flex space-x-4">
@@ -598,35 +592,27 @@
         </div>
     </footer>
 
+    <!-- FLOATING SUPPORT BUTTON -->
+    <a href="https://events-lbrce.in/support" class="fixed bottom-6 right-6 z-50 bg-lbrce-blue text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,51,102,0.4)] hover:shadow-[0_8px_25px_rgba(0,51,102,0.6)] hover:scale-110 transition-all duration-300 group" aria-label="Support Portal">
+        <i class="ph-fill ph-headset text-2xl group-hover:rotate-12 transition-transform"></i>
+    </a>
+
     <!-- INTERACTION SCRIPTS -->
     <script>
-        // Upgraded Preloader Logic
+        // Upgraded Premium Preloader Logic
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-            const loadBar = document.getElementById('load-bar');
             const body = document.body;
             
-            // Artificial progress simulation for "Better" feel
-            let width = 0;
-            const interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    
-                    // Finalize loading
-                    setTimeout(() => {
-                        preloader.classList.add('loaded');
-                        body.classList.remove('loading');
-                        
-                        setTimeout(() => {
-                            preloader.style.display = 'none';
-                        }, 1000);
-                    }, 400);
-                } else {
-                    width += Math.random() * 15; // Jumpy natural loading feel
-                    if (width > 100) width = 100;
-                    loadBar.style.width = width + '%';
-                }
-            }, 100);
+            // Artificial delay for smooth aesthetic load
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                body.classList.remove('loading');
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 800); // 800ms natural feel
         });
 
         // Mobile Menu Toggle
