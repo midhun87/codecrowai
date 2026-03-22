@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Support | LBRCE Events & Registrations Portal</title>
+    <meta name="description" content="Get help with LBRCE Events registrations, certificates, and more.">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        lbrce: { blue: '#003366', accent: '#FFB800', light: '#F3F4F6' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- SIMPLE NAVIGATION -->
+    <nav class="w-full bg-white shadow-sm border-b border-gray-100 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="https://events-lbrce.in" class="flex items-center gap-3 group">
+                    <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" alt="LBRCE Logo" class="h-10 w-auto">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-900 group-hover:text-lbrce-blue transition-colors">LBRCE Events</span>
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Support Center</span>
+                    </div>
+                </a>
+                <a href="https://events-lbrce.in" class="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-lbrce-blue transition-colors bg-gray-50 hover:bg-blue-50 px-4 py-2 rounded-lg">
+                    <i class="ph ph-arrow-left"></i> Back to Portal
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN SUPPORT CONTENT -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 z-0"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 z-0"></div>
+
+        <div class="max-w-3xl w-full z-10">
+            <!-- Header Section -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 mb-4 shadow-sm border border-blue-100">
+                    <i class="ph-fill ph-lifebuoy text-3xl text-lbrce-blue"></i>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">How can we help you?</h1>
+                <p class="text-lg text-gray-600">Submit a ticket below, and our support team will get back to you shortly.</p>
+            </div>
+
+            <!-- Email Direct Support Banner -->
+            <div class="bg-gradient-to-r from-gray-900 to-lbrce-blue rounded-2xl p-6 mb-8 shadow-lg text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <i class="ph-fill ph-envelope-open text-3xl text-lbrce-accent"></i>
+                    <div>
+                        <h3 class="font-bold text-lg">Prefer Email?</h3>
+                        <p class="text-blue-100 text-sm">You can reach out to our technical team directly.</p>
+                    </div>
+                </div>
+                <a href="mailto:info@xetasolutions.in" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2.5 rounded-xl font-semibold transition-colors flex items-center gap-2 whitespace-nowrap">
+                    info@xetasolutions.in
+                </a>
+            </div>
+
+            <!-- Support Form -->
+            <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden">
+                <div class="p-8 sm:p-10">
+                    <form action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-6">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="Name" required placeholder="John Doe" 
+                                       class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all placeholder-gray-400">
+                            </div>
+
+                            <!-- Mobile -->
+                            <div>
+                                <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-1">Mobile Number <span class="text-red-500">*</span></label>
+                                <input type="tel" id="mobile" name="Mobile" required placeholder="+91 9876543210" 
+                                       class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all placeholder-gray-400">
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="Email" required placeholder="john@example.com" 
+                                   class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all placeholder-gray-400">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Event -->
+                            <div>
+                                <label for="event" class="block text-sm font-semibold text-gray-700 mb-1">Select Event <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select id="event" name="Event" required class="appearance-none w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all font-medium text-gray-800">
+                                        <option value="Code Crow AI">Code Crow AI</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <i class="ph-bold ph-caret-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- College -->
+                            <div>
+                                <label for="collegeSelect" class="block text-sm font-semibold text-gray-700 mb-1">College Name <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select id="collegeSelect" name="College_Selection" required class="appearance-none w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all text-gray-800">
+                                        <option value="LBRCE" selected>LBRCE</option>
+                                        <option value="Other">Other (Specify Below)</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <i class="ph-bold ph-caret-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Other College (Hidden by default) -->
+                        <div id="otherCollegeDiv" class="hidden transition-all duration-300 transform origin-top">
+                            <label for="otherCollegeInput" class="block text-sm font-semibold text-gray-700 mb-1">Enter your College Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="otherCollegeInput" name="College_Name" placeholder="e.g., IIT Madras" 
+                                   class="w-full px-4 py-3 bg-blue-50 border border-blue-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all placeholder-blue-300">
+                        </div>
+
+                        <!-- Issue Details -->
+                        <div>
+                            <label for="issue" class="block text-sm font-semibold text-gray-700 mb-1">Issue Details <span class="text-red-500">*</span></label>
+                            <textarea id="issue" name="Issue_Description" rows="5" required placeholder="Please describe your problem in detail..." 
+                                      class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-lbrce-blue focus:border-lbrce-blue outline-none transition-all placeholder-gray-400 resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-lbrce-blue hover:bg-blue-900 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                                Submit Ticket <i class="ph-bold ph-paper-plane-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-gray-50 px-8 py-4 border-t border-gray-100 flex items-center justify-center gap-2 text-sm text-gray-500">
+                    <i class="ph-fill ph-lock-key"></i> Powered by <a href="https://xetasolutions.in" target="_blank" class="font-bold text-lbrce-blue hover:underline">Xeta Tech Solutions</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Logic to show/hide the "Other College" input field
+        document.addEventListener('DOMContentLoaded', () => {
+            const collegeSelect = document.getElementById('collegeSelect');
+            const otherCollegeDiv = document.getElementById('otherCollegeDiv');
+            const otherCollegeInput = document.getElementById('otherCollegeInput');
+
+            collegeSelect.addEventListener('change', function() {
+                if (this.value === 'Other') {
+                    otherCollegeDiv.classList.remove('hidden');
+                    otherCollegeInput.required = true;
+                    // Auto focus for better UX
+                    setTimeout(() => otherCollegeInput.focus(), 50); 
+                } else {
+                    otherCollegeDiv.classList.add('hidden');
+                    otherCollegeInput.required = false;
+                    otherCollegeInput.value = ''; // Clear value if hidden
+                }
+            });
+        });
+    </script>
+</body>
+</html>
