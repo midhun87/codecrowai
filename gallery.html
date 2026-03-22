@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Gallery - Code Crow AI Hackathon | LBRCE Events</title>
+    <meta name="description" content="Event gallery for Code Crow AI Hackathon at LBRCE.">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        lbrce: { blue: '#003366', accent: '#FFB800', light: '#F3F4F6' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Lightbox transitions */
+        #lightbox {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #lightbox:not(.active) {
+            opacity: 0;
+            visibility: hidden;
+        }
+        #lightbox-img {
+            transition: transform 0.3s ease;
+            transform: scale(0.95);
+        }
+        #lightbox.active #lightbox-img {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- NAVIGATION -->
+    <nav class="w-full bg-white shadow-sm border-b border-gray-100 relative z-20 sticky top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="https://events-lbrce.in" class="flex items-center gap-3 group">
+                    <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" alt="LBRCE Logo" class="h-10 w-auto">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-900 group-hover:text-lbrce-blue transition-colors">LBRCE Events</span>
+                        <span class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Event Gallery</span>
+                    </div>
+                </a>
+                <a href="https://events-lbrce.in" class="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-lbrce-blue transition-colors bg-gray-50 hover:bg-blue-50 px-4 py-2 rounded-lg">
+                    <i class="ph ph-arrow-left"></i> Back to Portal
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GALLERY HEADER -->
+    <header class="bg-white border-b border-gray-200 relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-60 z-0"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-64 h-64 bg-yellow-50 rounded-full blur-3xl opacity-60 z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-sm text-lbrce-blue font-bold tracking-widest uppercase mb-4 shadow-sm">
+                Event Memories
+            </span>
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
+                Code Crow AI Hackathon
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Relive the moments of innovation, teamwork, and problem-solving from our flagship college-level AI hackathon.
+            </p>
+        </div>
+    </header>
+
+    <!-- GALLERY GRID -->
+    <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 auto-rows-[250px]">
+            
+            <!-- Image 1 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQG9IrQMtgl0-w/feedshare-shrink_2048_1536/B56ZxHVl1ZI8Ak-/0/1770723368497?e=1775692800&v=beta&t=F_TvKPvi132U7EPYMNkSK5qft2rzjdtKy8GvioglkAA" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQHtegg2lLQLxA/feedshare-shrink_2048_1536/B56ZxHVlzUHoAk-/0/1770723368395?e=1775692800&v=beta&t=iWGDhCygPt5yD7lxPW5MHjGtadotXVmfzHYT6G7zifQ" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 3 (Spans 2 rows for masonry effect) -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200 sm:row-span-2" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQFUShog91V9Ew/feedshare-shrink_2048_1536/B56ZxHVmOzHUAk-/0/1770723370239?e=1775692800&v=beta&t=K3cEZu-qL5O6yZIZ_nYZW6u9k34k6u166JblTdKtwf8" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQEED5yRO1yFPA/feedshare-shrink_2048_1536/B56ZxHVmJ3KcAk-/0/1770723369872?e=1775692800&v=beta&t=ZhubbdhggEX_smEK1BkOfsxgYzbvhPkNzRnna9xh4Pw" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQFEEaAhcwKZAQ/feedshare-shrink_2048_1536/B56ZxHVl4ZHoAk-/0/1770723368725?e=1775692800&v=beta&t=PsQsit-lNVs8X9dYsvAIj4byTi1VRa6IHK3rhV-TyFo" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQHvpka12UrvIg/feedshare-shrink_2048_1536/B56ZxHVm6fKIAk-/0/1770723373088?e=1775692800&v=beta&t=ZTEsI2fIXNb62DAwZ2YyvGKJKszwmiTnzctsQQ6gmt8" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQEpzXu8vIMyew/feedshare-shrink_2048_1536/B56ZxHVmz7KUAk-/0/1770723372719?e=1775692800&v=beta&t=pwyjN_Kp5IXL3kNo4MTdsMLADRLDvD5RFFLoJUVAvMM" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 8 (Spans 2 columns if screen is large enough) -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200 sm:col-span-2" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQGEjBMrfg6lrw/feedshare-shrink_2048_1536/B56ZxHVoDGJIAk-/0/1770723377867?e=1775692800&v=beta&t=wjbOMFwWRQQmU5XOVvnycJBXZS_SrxvM-t8CosPChug" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 9 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQHbD3MCxhxf5w/feedshare-shrink_1280/B56ZxHVoOtH0Ac-/0/1770723378533?e=1775692800&v=beta&t=Hax5_Sp0iWjG06HRYst_ujsvGqVkbadwXDkIxJwU1w8" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Image 10 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQGC_n_LFg5GXA/feedshare-shrink_2048_1536/B56ZxHVpGhHYAk-/0/1770723382203?e=1775692800&v=beta&t=aA2HpRV4BKqY_qc9GXMO41xHcHbhEXNxCqBcjbK8qLs" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <!-- Repeated Image 1 (Requested by duplicate URL in prompt) to round out grid -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-200" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQG9IrQMtgl0-w/feedshare-shrink_2048_1536/B56ZxHVl1ZI8Ak-/0/1770723368497?e=1775692800&v=beta&t=F_TvKPvi132U7EPYMNkSK5qft2rzjdtKy8GvioglkAA" 
+                     alt="Code Crow AI Hackathon Memory" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/20 transition-colors duration-300 flex items-center justify-center">
+                    <i class="ph-bold ph-arrows-out text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-gray-950/90 backdrop-blur-sm flex items-center justify-center" onclick="closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors focus:outline-none z-50">
+            <i class="ph-bold ph-x text-4xl drop-shadow-lg"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged gallery image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- STRICT FOOTER -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="border-t border-gray-800 pt-8 pb-8 flex flex-col items-center gap-2">
+            <p class="text-sm text-gray-500 text-center">
+                &copy; 2026 Xeta Tech Solutions. All rights reserved.
+            </p>
+            <p class="text-sm text-gray-500 text-center">
+                Designed, Developed & Maintained by <a href="https://xetasolutions.in" target="_blank" class="text-lbrce-accent hover:text-yellow-400 font-bold hover:underline transition-colors">Xeta Tech Solutions</a> .
+            </p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX SCRIPT -->
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling while open
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                lightboxImg.src = ''; // Clear image after animation
+            }, 300);
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
